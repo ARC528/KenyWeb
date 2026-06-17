@@ -1,0 +1,261 @@
+:root {
+  --ink: #0e0d0a;
+  --panel: rgba(9, 9, 7, .86);
+  --gold: #bca77d;
+  --gold-soft: #d8c79d;
+  --paper: #e7d5b2;
+  --line: rgba(207, 184, 134, .28);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--gold-soft);
+  background: #080806;
+  font-family: "Noto Serif JP", serif;
+  overflow-x: hidden;
+}
+
+.site {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  background:
+    radial-gradient(circle at 50% 45%, transparent 48%, rgba(0,0,0,.5) 83%, rgba(0,0,0,.9) 100%);
+}
+
+.sidebar {
+  position: relative;
+  z-index: 5;
+  min-height: 100vh;
+  padding: 28px 22px;
+  background: linear-gradient(90deg, rgba(4,4,3,.96), rgba(12,11,9,.82));
+  border-right: 1px solid rgba(188,167,125,.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand { text-align: center; margin-bottom: 46px; }
+.brand-ja {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: .18em;
+  font-size: 32px;
+  line-height: 1.55;
+}
+.brand-en {
+  margin-top: 22px;
+  font: 600 12px/1.35 "Cinzel", serif;
+  letter-spacing: .12em;
+  color: rgba(188,167,125,.68);
+}
+
+.side-menu { width: 100%; display: grid; gap: 18px; }
+.side-menu a, .side-menu button {
+  all: unset;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  column-gap: 12px;
+  align-items: center;
+  color: var(--gold);
+  font-size: 14px;
+}
+.side-menu small {
+  grid-column: 2;
+  margin-top: 4px;
+  font: 600 10px "Cinzel", serif;
+  letter-spacing: .12em;
+  color: rgba(188,167,125,.72);
+}
+.icon {
+  width: 23px; height: 23px;
+  border: 1px solid rgba(188,167,125,.45);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 13px;
+}
+
+.compass {
+  margin-top: auto;
+  width: 96px; height: 96px;
+  border: 1px solid rgba(188,167,125,.34);
+  border-radius: 50%;
+  position: relative;
+  opacity: .78;
+}
+.compass::before, .compass::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(188,167,125,.18);
+  border-radius: 50%;
+}
+.needle {
+  position: absolute;
+  left: 50%; top: 11px;
+  width: 1px; height: 74px;
+  background: var(--gold);
+  transform: translateX(-50%) rotate(18deg);
+}
+.needle::after {
+  content: "";
+  position: absolute;
+  left: -5px; top: -2px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 16px solid var(--gold);
+}
+
+.map-stage {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  background-image:
+    linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.18)),
+    url("./assets/背景画像.png");
+  background-size: cover;
+  background-position: center;
+}
+.map-stage::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 50% 47%, rgba(255,232,180,.08), transparent 35%),
+    radial-gradient(circle, transparent 42%, rgba(0,0,0,.62) 100%);
+  pointer-events: none;
+}
+.map-stage::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size: 5px 5px;
+  mix-blend-mode: overlay;
+  opacity: .35;
+  pointer-events: none;
+}
+
+.top-note {
+  position: absolute;
+  z-index: 2;
+  right: 46px;
+  top: 34px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  color: #d8c79d;
+  text-shadow: 0 2px 8px #000;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: .08em;
+}
+.lock {
+  border: 1px solid rgba(216,199,157,.6);
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.map-link {
+  position: absolute;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  text-decoration: none;
+  color: var(--gold-soft);
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 18px 24px rgba(0,0,0,.65));
+}
+.circle {
+  width: clamp(138px, 13vw, 190px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  background: radial-gradient(circle, rgba(22,20,16,.88), rgba(10,10,8,.92));
+  border: 1px solid rgba(216,199,157,.45);
+  box-shadow: inset 0 0 42px rgba(216,199,157,.06);
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.circle strong {
+  font-size: clamp(34px, 4vw, 55px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+.circle em {
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: .18em;
+}
+.circle b {
+  font: 600 18px "Cinzel", serif;
+  letter-spacing: .08em;
+}
+.circle i {
+  font-style: normal;
+  font-size: 30px;
+  line-height: .9;
+}
+.ribbon {
+  margin-top: -8px;
+  min-width: 190px;
+  padding: 8px 22px;
+  color: #1d1610;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: .08em;
+  background: linear-gradient(90deg, transparent, rgba(231,213,178,.9) 13%, rgba(231,213,178,.95) 87%, transparent);
+}
+.map-link:hover .circle {
+  transform: scale(1.04);
+  border-color: rgba(241,222,170,.9);
+  box-shadow: inset 0 0 54px rgba(216,199,157,.13), 0 0 22px rgba(216,199,157,.16);
+}
+
+.map-link-about { left: 29%; top: 43%; }
+.map-link-diary { left: 78%; top: 43%; }
+.map-link-songs { left: 56%; top: 76%; }
+
+@media (max-width: 900px) {
+  .site { grid-template-columns: 1fr; }
+  .sidebar {
+    min-height: auto;
+    height: auto;
+    padding: 14px 18px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .brand-ja { writing-mode: horizontal-tb; font-size: 22px; }
+  .brand-en, .compass, .side-menu { display: none; }
+  .map-stage { min-height: calc(100vh - 68px); background-position: center; }
+  .top-note { right: 18px; top: 16px; font-size: 12px; line-height: 1.7; }
+  .map-link-about { left: 31%; top: 42%; }
+  .map-link-diary { left: 70%; top: 45%; }
+  .map-link-songs { left: 50%; top: 74%; }
+  .ribbon { min-width: 150px; font-size: 12px; padding: 7px 12px; }
+}
+
+@media (max-width: 560px) {
+  .map-stage {
+    min-height: 760px;
+    background-size: auto 100%;
+  }
+  .top-note { display: none; }
+  .circle { width: 124px; }
+  .circle strong { font-size: 32px; }
+  .circle em { font-size: 12px; }
+  .circle b { font-size: 14px; }
+  .ribbon { min-width: 136px; font-size: 11px; }
+  .map-link-about { left: 34%; top: 31%; }
+  .map-link-diary { left: 66%; top: 51%; }
+  .map-link-songs { left: 50%; top: 73%; }
+}
