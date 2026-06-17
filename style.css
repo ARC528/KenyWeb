@@ -116,7 +116,7 @@ body {
   overflow: hidden;
   background-image:
     linear-gradient(rgba(0,0,0,.12), rgba(0,0,0,.18)),
-    url("./assets/背景画像.png");
+    url("./背景画像.png");
   background-size: cover;
   background-position: center;
 }
