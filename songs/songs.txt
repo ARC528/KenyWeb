@@ -1,0 +1,13 @@
+# type|title|youtube_url|x|y
+# typeは diary / prayer / night の3種類
+# x,y は画面上の配置位置（%）です
+
+diary|雨の匂い|https://www.youtube.com/|28|21
+prayer|夜の港で|https://www.youtube.com/|60|28
+night|窓辺のギター|https://www.youtube.com/|78|41
+diary|電車の記憶|https://www.youtube.com/|45|51
+prayer|灯火|https://www.youtube.com/|29|66
+night|無人駅|https://www.youtube.com/|64|70
+diary|落ち葉の道|https://www.youtube.com/|45|76
+prayer|遠い灯り|https://www.youtube.com/|49|90
+night|冬の終わり|https://www.youtube.com/|73|91

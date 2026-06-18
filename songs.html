@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>音 | SONGS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./songs.css" />
+  <link rel="stylesheet" href="./common.css" />
+</head>
+<body>
+  <main class="songs-site">
+    <aside class="page-sidebar">
+      <a class="page-brand" href="./index.html" aria-label="トップページへ">
+        <span>健一の楽曲</span>
+        <small>＋ 異界地図</small>
+      </a>
+
+      <nav class="page-nav" aria-label="メインメニュー">
+        <a href="./about.html"><span>今</span><small>今日は<br>ABOUT</small></a>
+        <a href="./diary.html"><span>御</span><small>御心<br>DIARY</small></a>
+        <a class="active" href="./songs.html"><span>♪</span><small>音<br>SONGS</small></a>
+      </nav>
+
+      <p class="page-copy">あなたの心に、<br>そっと灯す音を。</p>
+      <div class="page-lantern" aria-hidden="true"></div>
+    </aside>
+
+    <section class="songs-stage" aria-label="音 楽曲一覧">
+      <header class="songs-title">
+        <p class="seal">♪</p>
+        <div>
+          <h1>音</h1>
+          <p>SONGS</p>
+        </div>
+      </header>
+
+      <section class="songs-legend" aria-label="曲の種類">
+        <p><i class="tone tone-diary"></i>記憶</p>
+        <p><i class="tone tone-prayer"></i>祈り</p>
+        <p><i class="tone tone-night"></i>夜</p>
+      </section>
+
+      <div id="songList" class="song-list" aria-live="polite"></div>
+
+    </section>
+  </main>
+
+  <template id="songTemplate">
+    <a class="song-pin" target="_blank" rel="noopener noreferrer">
+      <span class="orb">♪</span>
+      <span class="song-body">
+        <strong></strong>
+        <small>YouTube ↗</small>
+      </span>
+    </a>
+  </template>
+
+  <script src="./songs.js"></script>
+</body>
+</html>

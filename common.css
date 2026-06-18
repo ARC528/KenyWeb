@@ -1,0 +1,275 @@
+:root {
+  --sidebar-width: 170px;
+  --gold: #bca77d;
+  --gold-soft: #d8c79d;
+}
+
+.page-sidebar {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  padding: 24px 14px 22px;
+  color: var(--gold-soft);
+  border-right: 1px solid rgba(188,167,125,.22);
+  background:
+    linear-gradient(90deg, rgba(3,3,2,.98), rgba(9,8,6,.93));
+  box-shadow: inset -20px 0 28px rgba(0,0,0,.34);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page-sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 14px 12px;
+  border: 1px solid rgba(188,167,125,.18);
+  pointer-events: none;
+}
+.page-brand {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  margin: 18px 0 24px;
+  color: var(--gold-soft);
+  text-decoration: none;
+}
+.page-brand span {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: .22em;
+  font-size: 22px;
+  line-height: 1.65;
+}
+.page-brand small {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 12px;
+  letter-spacing: .22em;
+  color: rgba(188,167,125,.72);
+}
+.page-compass {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  margin: 0 0 26px;
+  border: 1px solid rgba(188,167,125,.34);
+  border-radius: 50%;
+  opacity: .76;
+}
+.page-compass::before,
+.page-compass::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(188,167,125,.18);
+  border-radius: 50%;
+}
+.page-compass span {
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  width: 1px;
+  height: 52px;
+  background: var(--gold);
+  transform: translateX(-50%) rotate(20deg);
+}
+.page-nav,
+.page-subnav {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: grid;
+}
+.page-nav { gap: 8px; }
+.page-nav a,
+.page-subnav a {
+  text-decoration: none;
+  color: var(--gold);
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 8px;
+  border-radius: 3px;
+  transition: background .25s ease, color .25s ease, transform .25s ease;
+}
+.page-nav a.active,
+.page-nav a:hover,
+.page-subnav a:hover {
+  background: rgba(188,167,125,.22);
+  color: #ead8ad;
+}
+.page-nav a.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 3px;
+  height: 42px;
+  background: rgba(234,216,173,.62);
+}
+.page-nav span,
+.page-subnav span {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(188,167,125,.34);
+  border-radius: 50%;
+  font-size: 17px;
+}
+.page-subnav span { font-size: 13px; }
+.page-nav small,
+.page-subnav small {
+  font: 600 11px/1.45 "Cinzel", "Noto Serif JP", serif;
+  letter-spacing: .14em;
+}
+.page-subnav {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(188,167,125,.14);
+  gap: 7px;
+}
+.page-copy {
+  position: relative;
+  z-index: 1;
+  margin: auto 0 18px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  color: rgba(216,199,157,.78);
+  font-size: 12px;
+  letter-spacing: .18em;
+  line-height: 1.8;
+}
+.page-lantern {
+  position: relative;
+  z-index: 1;
+  width: 62px;
+  height: 86px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(188,167,125,.22);
+  border-radius: 44% 44% 28% 28%;
+  background:
+    radial-gradient(circle at 50% 68%, rgba(255,183,81,.72), rgba(130,79,28,.18) 33%, transparent 58%),
+    linear-gradient(rgba(216,199,157,.18), rgba(0,0,0,.12));
+  box-shadow: 0 0 22px rgba(255,183,81,.12);
+  opacity: .86;
+}
+
+@media (max-width: 900px) {
+  .about-site,
+  .diary-site,
+  .songs-site { grid-template-columns: 1fr !important; }
+  .page-sidebar {
+    min-height: auto;
+    height: auto;
+    padding: 12px 14px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .page-sidebar::before,
+  .page-compass,
+  .page-subnav,
+  .page-copy,
+  .page-lantern { display: none; }
+  .page-brand { margin: 0; display: block; }
+  .page-brand span { writing-mode: horizontal-tb; font-size: 20px; letter-spacing: .08em; }
+  .page-brand small { display: none; }
+  .page-nav { width: auto; display: flex; gap: 6px; }
+  .page-nav a { grid-template-columns: 1fr; padding: 8px 10px; text-align: center; }
+  .page-nav span { display: none; }
+  .page-nav small { font-size: 10px; line-height: 1.25; }
+  .page-nav a.active::before { display: none; }
+}
+
+/* ===== Desktop compact layout: about / diary / songs only ===== */
+@media (min-width: 981px) {
+  :root { --sidebar-width: 150px; }
+
+  .about-site,
+  .diary-site,
+  .songs-site {
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .page-sidebar {
+    min-height: 100vh;
+    padding: 16px 12px 14px;
+  }
+
+  .page-sidebar::before { inset: 10px 9px; }
+
+  .page-brand {
+    gap: 7px;
+    margin: 8px 0 16px;
+  }
+
+  .page-brand span {
+    font-size: 19px;
+    line-height: 1.45;
+    letter-spacing: .18em;
+  }
+
+  .page-brand small {
+    font-size: 10px;
+    letter-spacing: .18em;
+  }
+
+  .page-compass {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 16px;
+  }
+  .page-compass::before,
+  .page-compass::after { inset: 8px; }
+  .page-compass span {
+    top: 7px;
+    height: 42px;
+  }
+
+  .page-nav { gap: 5px; }
+  .page-nav a,
+  .page-subnav a {
+    grid-template-columns: 30px 1fr;
+    gap: 8px;
+    padding: 8px 6px;
+  }
+
+  .page-nav span,
+  .page-subnav span {
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+  }
+
+  .page-nav small,
+  .page-subnav small {
+    font-size: 9px;
+    line-height: 1.35;
+  }
+
+  .page-nav a.active::before { height: 34px; }
+
+  .page-subnav {
+    margin-top: 18px;
+    padding-top: 14px;
+    gap: 4px;
+  }
+
+  .page-copy {
+    margin: auto 0 10px;
+    font-size: 10px;
+    line-height: 1.65;
+    letter-spacing: .15em;
+  }
+
+  .page-lantern {
+    width: 48px;
+    height: 66px;
+    margin-bottom: 6px;
+  }
+}
